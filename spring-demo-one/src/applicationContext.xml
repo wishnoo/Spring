@@ -7,6 +7,8 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!-- Load the properties file -->
+	<context:property-placeholder location="classpath:sport.properties"/>
     <!-- Define your beans here -->
     
     <!-- define the dependency  -->
@@ -20,8 +22,8 @@
     	<property name="FortuneService" ref="myFortuneService"/>
     	
     	<!-- Inject literal values -->
-    	<property name="emailAddress" value="thebestcoach@wishnoo.com"></property>
-    	<property name="team" value="Rajasthan Royals"></property>
+    	<property name="emailAddress" value="${foo.email}"></property>
+    	<property name="team" value="${foo.team}"></property>
     </bean>
     <!-- 
 	Add a logger config to see logging messages.		
