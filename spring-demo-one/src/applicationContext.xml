@@ -18,6 +18,10 @@
     	class="com.demo.springdemo.CricketCoach">
     	<!-- set up setter injection -->
     	<property name="FortuneService" ref="myFortuneService"/>
+    	
+    	<!-- Inject literal values -->
+    	<property name="emailAddress" value="thebestcoach@wishnoo.com"></property>
+    	<property name="team" value="Rajasthan Royals"></property>
     </bean>
     <!-- 
 	Add a logger config to see logging messages.		
