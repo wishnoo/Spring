@@ -2,6 +2,14 @@ package com.demo.springdemo;
 
 public class TrackCoach implements Coach {
 
+	// define a private field for the dependency
+	private FortuneService fortuneService;
+	
+	// define a constructor to accept fortuneservice
+	public TrackCoach(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
+	}
+	
 	@Override
 	public String getDailyWorkout() {
 		
@@ -10,8 +18,8 @@ public class TrackCoach implements Coach {
 
 	@Override
 	public String getDailyFortune() {
-		// TODO Auto-generated method stub
-		return null;
+		return fortuneService.getFortune();
 	}
+	
 
 }
