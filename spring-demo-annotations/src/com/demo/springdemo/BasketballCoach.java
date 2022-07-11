@@ -5,6 +5,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class BasketballCoach implements Coach {
 
+	private BasketballCoach() {
+		System.out.println(">> BasketballCoach: inside default constructor");
+	}
+	
 	@Override
 	public String getDailyWorkout() {
 		return "Put more balls into the net";
