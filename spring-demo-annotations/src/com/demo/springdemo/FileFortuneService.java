@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +17,20 @@ public class FileFortuneService implements FortuneService {
 	private ArrayList<String> theFortunes;
 	
 	public FileFortuneService() {
+		System.out.println(">> FileFortuneService: inside default constructor");
+	}
+	@Override
+	public String getFortune() {
+		// Create a Random object 
+		Random rand = new Random();
+		int index = rand.nextInt(theFortunes.size());
+		return theFortunes.get(index);
+	}
+	
+	// define my init method
+	@PostConstruct
+	public void doMyStartupStuff() {
+		System.out.println(">> FileFortuneService: inside of doMyStartupStuff()");
 		File file = new File(filePath);
 		
 		System.out.println("Reading fortunes from file: " + file);
@@ -27,19 +43,12 @@ public class FileFortuneService implements FortuneService {
 			String fortuneLine;
 			while((fortuneLine = bufferedReader.readLine()) != null) {
 				theFortunes.add(fortuneLine);
+				System.out.println(fortuneLine);
 			}
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		
-	}
-	@Override
-	public String getFortune() {
-		// Create a Random object 
-		Random rand = new Random();
-		int index = rand.nextInt(theFortunes.size());
-		return theFortunes.get(index);
 	}
 
 }
